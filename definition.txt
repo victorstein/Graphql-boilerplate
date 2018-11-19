@@ -1,0 +1,217 @@
+Tecnologias
+
+Lenguaje:
+Javascript
+
+Base de datos: 
+Mongo DB (mlab)
+
+API:
+GraphQL, Apollo Server, Node JS, Express
+
+Client:
+React JS, Apollo Client
+
+Correos Electronicos:
+Node Mailer
+
+Hosting:
+Firebase Hosting (Google)
+
+Environment setup
+** Hours: 8 ***
+
+################################  SCHEMAS  #########################################
+
+#######   FORMS   ######
+
+** TypeDefs ***
+type Form:
+id: String!
+title: String!
+questions: [Question]!
+Sections: [Section]
+description: String
+categories: FormCategory!
+preRequisites: [Requisite]
+// 1 hour
+
+** Mutations **
+createForm(title!, questions!, description, categories)   //4 hours
+deleteForm(id!) // 2 hours
+updateForm(id!, title, questions, description, categories, preRequisites) // 2 hours
+
+** Hours: 9 ***
+
+** TypeDefs ***
+type Requisite:
+id: String!
+title: String!
+description: String!
+url: String!
+
+*Mutations*
+createRequisite(title!, description!, url!) // 4 hours
+deleteRequisite: (id!) // 1 hour
+
+** Hours: 5 ***
+
+** TypeDefs ***
+Type FormCategory:
+id: String!
+name: String!
+description: String!
+forms: Form
+
+**Mutations**
+createCategoty(name!, description, forms)
+updateCategory(id!, name, description, forms)
+deleteCategory(id!)
+
+** Hours: 4 ***
+
+** TypeDefs ***
+type Section:
+id: String!
+name: sting!
+questions: [Question]
+
+**Mutations**
+createSection(name!, questions)
+updateSection(id!, name, questions)
+deleteSection(id!)
+
+** Hours: 4 ***
+
+** TypeDefs ***
+type Question:
+id: String!
+section: String
+subSection: String
+question: String!
+prettyQuestion: String
+fieldType: Field!
+answer: String
+logic: bool!
+routeTo: Question
+tooltip: Tooltip
+flagged: bool!
+inTicket: Ticket
+
+**Mutations**
+createQuestion(question!, fieldType, logic, flagged)
+updateQuestion(id!, question!, section, subSection, prettyQuestion, answer, fieldType, routeTo, logic, tooltip, flagged, inTicket)
+deleteQuestion(id!)
+
+** Hours: 10 ***
+
+** TypeDefs ***
+type Tooltip
+id: String!
+title: String!
+content: String!
+type: String! (image, video, externalUrl)
+url: String
+
+**Mutations**
+createTooltip(title!, content!, type!, url!)
+updateTooltip(id!, title, content, type, url)
+deleteTooltip(id!)
+
+** Hours: 4 ***
+
+** TypeDefs ***
+type Field:
+id: String!
+type: String! (checkBox, select, radio, input)
+maxLength: Int
+isText: bool!
+options: [Multiple]
+
+**Mutations**
+createField(type!, isText!)
+updateField(id!, type, maxLength, isText, options)
+deleteField(id!)
+
+** Hours: 6 ***
+
+** TypeDefs ***
+type Multiple:
+id: String!
+field: String!
+prettyField: String
+routeTo: String!
+
+**Mutations**
+createMultiple(field!, routeTo!)
+updateMultiple(id!, field, routeTo, prettyField)
+deleteMultiple(id!)
+
+** Hours: 4 ***
+
+
+#######   USERS   ######
+
+** TypeDefs ***
+type User:
+id: String!
+firstName: String!
+lastName: String!
+email: String!
+password: String!
+profilePic: String
+myForms: [Form]
+myPlan: Plan
+role: String! (admin, editor, user)
+myTickets: Ticket
+
+**Mutations**
+createUser(firstName!, lastName!, email!, role!)
+updateUser(id!, firstName, lastName, email, profilePic, myForms, myPlan, role, myTickets)
+deleteUser(id!)
+
+** Hours: 8 ***
+
+** TypeDefs ***
+type Ticket:
+id: String!
+title: String!
+responses: [Response]
+closed: bool!
+date: String!
+
+**Mutations**
+createTicket(title!, closed!)
+updateTicket(id!, title, closed, responses)
+deleteTicket(id!)
+
+** Hours: 4 ***
+
+** TypeDefs ***
+type Response:
+id: String!
+owner: User!
+date: String!
+content: String
+
+**Mutations**
+createResponse(owner!, date!, content!)
+updateResponse(id!, owner, date, content)
+deleteResponse(id!)
+
+** Hours: 4 ***
+
+** TypeDefs ***
+type Plan:
+id: String!
+title: String!
+description: String!
+features: [String!]
+price: int!
+
+**Mutations**
+createPlan(title!, description!, features!, price!)
+updatePlan(id!, title, description, features, price)
+deletePlan(id!)
+
+** Hours: 4 ***
