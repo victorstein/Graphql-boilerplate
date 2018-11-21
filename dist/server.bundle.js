@@ -86,6 +86,30 @@
 /************************************************************************/
 /******/ ({
 
+/***/ "./src/models/index.js":
+/*!*****************************!*\
+  !*** ./src/models/index.js ***!
+  \*****************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _user__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./user */ \"./src/models/user.js\");\n\n/* harmony default export */ __webpack_exports__[\"default\"] = ({\n  User: _user__WEBPACK_IMPORTED_MODULE_0__[\"default\"]\n});\n\n//# sourceURL=webpack:///./src/models/index.js?");
+
+/***/ }),
+
+/***/ "./src/models/user.js":
+/*!****************************!*\
+  !*** ./src/models/user.js ***!
+  \****************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var mongoose__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! mongoose */ \"mongoose\");\n/* harmony import */ var mongoose__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(mongoose__WEBPACK_IMPORTED_MODULE_0__);\n\nvar UserSchema = new mongoose__WEBPACK_IMPORTED_MODULE_0__[\"Schema\"]({\n  email: {\n    type: String,\n    required: true\n  },\n  name: {\n    type: String,\n    required: true\n  },\n  lastName: {\n    type: String,\n    required: true\n  },\n  password: {\n    type: String,\n    required: true\n  }\n}, {\n  timestamps: true\n});\n/* harmony default export */ __webpack_exports__[\"default\"] = (mongoose__WEBPACK_IMPORTED_MODULE_0___default.a.model('User', UserSchema));\n\n//# sourceURL=webpack:///./src/models/user.js?");
+
+/***/ }),
+
 /***/ "./src/resolvers/index.js":
 /*!********************************!*\
   !*** ./src/resolvers/index.js ***!
@@ -106,7 +130,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _use
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony default export */ __webpack_exports__[\"default\"] = ({\n  Query: {\n    user: function user(root, args, context, info) {\n      return 'user';\n    }\n  },\n  Mutation: {\n    signUp: function signUp(root, args, context, info) {\n      return 'signed up';\n    }\n  }\n});\n\n//# sourceURL=webpack:///./src/resolvers/user.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var apollo_server_express__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! apollo-server-express */ \"apollo-server-express\");\n/* harmony import */ var apollo_server_express__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(apollo_server_express__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../utils */ \"./src/utils/index.js\");\nfunction asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }\n\nfunction _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, \"next\", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, \"throw\", err); } _next(undefined); }); }; }\n\n\n\nvar pwHash = _utils__WEBPACK_IMPORTED_MODULE_1__[\"default\"].pwHash;\n/* harmony default export */ __webpack_exports__[\"default\"] = ({\n  Query: {\n    user: function user(root, args, context, info) {\n      return 'user';\n    }\n  },\n  Mutation: {\n    signUp: function () {\n      var _signUp = _asyncToGenerator(\n      /*#__PURE__*/\n      regeneratorRuntime.mark(function _callee(root, _ref, _ref2, info) {\n        var email, name, lastName, password, User, newUser, error;\n        return regeneratorRuntime.wrap(function _callee$(_context) {\n          while (1) {\n            switch (_context.prev = _context.next) {\n              case 0:\n                email = _ref.email, name = _ref.name, lastName = _ref.lastName, password = _ref.password;\n                User = _ref2.User;\n                _context.prev = 2;\n                _context.next = 5;\n                return pwHash(password);\n\n              case 5:\n                password = _context.sent;\n                newUser = new User({\n                  email: email,\n                  name: name,\n                  lastName: lastName,\n                  password: password\n                });\n                return _context.abrupt(\"return\", newUser.save());\n\n              case 10:\n                _context.prev = 10;\n                _context.t0 = _context[\"catch\"](2);\n                console.log(_context.t0);\n                error = new apollo_server_express__WEBPACK_IMPORTED_MODULE_0__[\"ApolloError\"](\"Error creating new user \".concat(_context.t0.message));\n                return _context.abrupt(\"return\", error);\n\n              case 15:\n              case \"end\":\n                return _context.stop();\n            }\n          }\n        }, _callee, this, [[2, 10]]);\n      }));\n\n      return function signUp(_x, _x2, _x3, _x4) {\n        return _signUp.apply(this, arguments);\n      };\n    }()\n  }\n});\n\n//# sourceURL=webpack:///./src/resolvers/user.js?");
 
 /***/ }),
 
@@ -118,7 +142,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony default export */ 
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var apollo_server_express__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! apollo-server-express */ \"apollo-server-express\");\n/* harmony import */ var apollo_server_express__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(apollo_server_express__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var express__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! express */ \"express\");\n/* harmony import */ var express__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(express__WEBPACK_IMPORTED_MODULE_1__);\n/* harmony import */ var dotenv__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! dotenv */ \"dotenv\");\n/* harmony import */ var dotenv__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(dotenv__WEBPACK_IMPORTED_MODULE_2__);\n/* harmony import */ var _resolvers__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./resolvers */ \"./src/resolvers/index.js\");\n/* harmony import */ var _typeDefs__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./typeDefs */ \"./src/typeDefs/index.js\");\n\n\n\n\n\nObject(dotenv__WEBPACK_IMPORTED_MODULE_2__[\"config\"])();\nvar _process$env = process.env,\n    PORT = _process$env.PORT,\n    NODE_ENV = \"development\";\nvar app = express__WEBPACK_IMPORTED_MODULE_1___default()();\napp.disable('x-powered-by');\nvar server = new apollo_server_express__WEBPACK_IMPORTED_MODULE_0__[\"ApolloServer\"]({\n  typeDefs: _typeDefs__WEBPACK_IMPORTED_MODULE_4__[\"default\"],\n  resolvers: _resolvers__WEBPACK_IMPORTED_MODULE_3__[\"default\"],\n  playground: NODE_ENV !== 'production'\n});\nserver.applyMiddleware({\n  app: app\n});\napp.listen({\n  port: PORT\n}, function () {\n  return console.log(\"\\uD83D\\uDE80 Server ready at http://localhost:\".concat(PORT).concat(server.graphqlPath));\n});\n\n//# sourceURL=webpack:///./src/server.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _babel_polyfill__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/polyfill */ \"@babel/polyfill\");\n/* harmony import */ var _babel_polyfill__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_polyfill__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var apollo_server_express__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! apollo-server-express */ \"apollo-server-express\");\n/* harmony import */ var apollo_server_express__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(apollo_server_express__WEBPACK_IMPORTED_MODULE_1__);\n/* harmony import */ var express__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! express */ \"express\");\n/* harmony import */ var express__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(express__WEBPACK_IMPORTED_MODULE_2__);\n/* harmony import */ var dotenv__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! dotenv */ \"dotenv\");\n/* harmony import */ var dotenv__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(dotenv__WEBPACK_IMPORTED_MODULE_3__);\n/* harmony import */ var _resolvers__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./resolvers */ \"./src/resolvers/index.js\");\n/* harmony import */ var _typeDefs__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./typeDefs */ \"./src/typeDefs/index.js\");\n/* harmony import */ var mongoose__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! mongoose */ \"mongoose\");\n/* harmony import */ var mongoose__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(mongoose__WEBPACK_IMPORTED_MODULE_6__);\n/* harmony import */ var _models__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./models */ \"./src/models/index.js\");\nfunction asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }\n\nfunction _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, \"next\", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, \"throw\", err); } _next(undefined); }); }; }\n\n\n\n\n\n\n\n\n\n\n_asyncToGenerator(\n/*#__PURE__*/\nregeneratorRuntime.mark(function _callee() {\n  var _process$env, PORT, NODE_ENV, DB_URI, DB_NAME, DB_PASS, DB_USER, DB_PORT, User, app, server;\n\n  return regeneratorRuntime.wrap(function _callee$(_context) {\n    while (1) {\n      switch (_context.prev = _context.next) {\n        case 0:\n          _context.prev = 0;\n          Object(dotenv__WEBPACK_IMPORTED_MODULE_3__[\"config\"])();\n          _process$env = process.env, PORT = _process$env.PORT, NODE_ENV = \"development\", DB_URI = _process$env.DB_URI, DB_NAME = _process$env.DB_NAME, DB_PASS = _process$env.DB_PASS, DB_USER = _process$env.DB_USER, DB_PORT = _process$env.DB_PORT;\n          User = _models__WEBPACK_IMPORTED_MODULE_7__[\"default\"].User;\n          app = express__WEBPACK_IMPORTED_MODULE_2___default()();\n          app.disable('x-powered-by');\n          _context.next = 8;\n          return mongoose__WEBPACK_IMPORTED_MODULE_6___default.a.connect(\"mongodb://\".concat(DB_USER, \":\").concat(DB_PASS, \"@\").concat(DB_URI, \":\").concat(DB_PORT, \"/\").concat(DB_NAME), {\n            useNewUrlParser: true\n          });\n\n        case 8:\n          server = new apollo_server_express__WEBPACK_IMPORTED_MODULE_1__[\"ApolloServer\"]({\n            typeDefs: _typeDefs__WEBPACK_IMPORTED_MODULE_5__[\"default\"],\n            resolvers: _resolvers__WEBPACK_IMPORTED_MODULE_4__[\"default\"],\n            playground: NODE_ENV !== 'production',\n            context: {\n              User: User\n            }\n          });\n          server.applyMiddleware({\n            app: app\n          });\n          app.listen({\n            port: PORT\n          }, function () {\n            return console.log(\"\\uD83D\\uDE80 Server ready at http://localhost:\".concat(PORT).concat(server.graphqlPath));\n          });\n          _context.next = 16;\n          break;\n\n        case 13:\n          _context.prev = 13;\n          _context.t0 = _context[\"catch\"](0);\n          console.log(_context.t0);\n\n        case 16:\n        case \"end\":\n          return _context.stop();\n      }\n    }\n  }, _callee, this, [[0, 13]]);\n}))();\n\n//# sourceURL=webpack:///./src/server.js?");
 
 /***/ }),
 
@@ -154,7 +178,42 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var apol
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var apollo_server_express__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! apollo-server-express */ \"apollo-server-express\");\n/* harmony import */ var apollo_server_express__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(apollo_server_express__WEBPACK_IMPORTED_MODULE_0__);\nfunction _templateObject() {\n  var data = _taggedTemplateLiteral([\"\\n\\n  extend type Query {\\n    user(id: ID!): User\\n  }\\n\\n  extend type Mutation {\\n    signUp(email: String!, name: String!, lastName: String!): User\\n  }\\n\\n  type User {\\n    id: ID!\\n    email: String!\\n    name: String!\\n    lastName: String!\\n  }\\n\\n\"]);\n\n  _templateObject = function _templateObject() {\n    return data;\n  };\n\n  return data;\n}\n\nfunction _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }\n\n\n/* harmony default export */ __webpack_exports__[\"default\"] = (Object(apollo_server_express__WEBPACK_IMPORTED_MODULE_0__[\"gql\"])(_templateObject()));\n\n//# sourceURL=webpack:///./src/typeDefs/user.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var apollo_server_express__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! apollo-server-express */ \"apollo-server-express\");\n/* harmony import */ var apollo_server_express__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(apollo_server_express__WEBPACK_IMPORTED_MODULE_0__);\nfunction _templateObject() {\n  var data = _taggedTemplateLiteral([\"\\n\\n  extend type Query {\\n    user(id: ID!): User\\n  }\\n\\n  extend type Mutation {\\n    signUp(email: String!, name: String!, lastName: String!, password: String!): User\\n  }\\n\\n  type User {\\n    id: ID!\\n    email: String!\\n    name: String!\\n    lastName: String!\\n  }\\n\\n\"]);\n\n  _templateObject = function _templateObject() {\n    return data;\n  };\n\n  return data;\n}\n\nfunction _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }\n\n\n/* harmony default export */ __webpack_exports__[\"default\"] = (Object(apollo_server_express__WEBPACK_IMPORTED_MODULE_0__[\"gql\"])(_templateObject()));\n\n//# sourceURL=webpack:///./src/typeDefs/user.js?");
+
+/***/ }),
+
+/***/ "./src/utils/index.js":
+/*!****************************!*\
+  !*** ./src/utils/index.js ***!
+  \****************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _pwHash__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./pwHash */ \"./src/utils/pwHash.js\");\n\n/* harmony default export */ __webpack_exports__[\"default\"] = ({\n  pwHash: _pwHash__WEBPACK_IMPORTED_MODULE_0__[\"default\"]\n});\n\n//# sourceURL=webpack:///./src/utils/index.js?");
+
+/***/ }),
+
+/***/ "./src/utils/pwHash.js":
+/*!*****************************!*\
+  !*** ./src/utils/pwHash.js ***!
+  \*****************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var bcrypt__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! bcrypt */ \"bcrypt\");\n/* harmony import */ var bcrypt__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(bcrypt__WEBPACK_IMPORTED_MODULE_0__);\n\n/* harmony default export */ __webpack_exports__[\"default\"] = (function (pw) {\n  return new Promise(function (resolve, reject) {\n    bcrypt__WEBPACK_IMPORTED_MODULE_0___default.a.hash(pw, 10, function (e, hash) {\n      if (e) {\n        reject(e);\n      }\n\n      resolve(hash);\n    });\n  });\n});\n\n//# sourceURL=webpack:///./src/utils/pwHash.js?");
+
+/***/ }),
+
+/***/ "@babel/polyfill":
+/*!**********************************!*\
+  !*** external "@babel/polyfill" ***!
+  \**********************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+eval("module.exports = require(\"@babel/polyfill\");\n\n//# sourceURL=webpack:///external_%22@babel/polyfill%22?");
 
 /***/ }),
 
@@ -166,6 +225,17 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var apol
 /***/ (function(module, exports) {
 
 eval("module.exports = require(\"apollo-server-express\");\n\n//# sourceURL=webpack:///external_%22apollo-server-express%22?");
+
+/***/ }),
+
+/***/ "bcrypt":
+/*!*************************!*\
+  !*** external "bcrypt" ***!
+  \*************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+eval("module.exports = require(\"bcrypt\");\n\n//# sourceURL=webpack:///external_%22bcrypt%22?");
 
 /***/ }),
 
@@ -188,6 +258,17 @@ eval("module.exports = require(\"dotenv\");\n\n//# sourceURL=webpack:///external
 /***/ (function(module, exports) {
 
 eval("module.exports = require(\"express\");\n\n//# sourceURL=webpack:///external_%22express%22?");
+
+/***/ }),
+
+/***/ "mongoose":
+/*!***************************!*\
+  !*** external "mongoose" ***!
+  \***************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+eval("module.exports = require(\"mongoose\");\n\n//# sourceURL=webpack:///external_%22mongoose%22?");
 
 /***/ })
 
