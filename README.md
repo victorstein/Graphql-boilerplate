@@ -16,7 +16,8 @@ DB_USER = STRING //mongodb user
 DB_PASS = STRING //mongodb password
 DB_URI = STRING //mongodb URI comes after the @ and before the port
 DB_PORT = INT //mongodb port
-DB_NAME = string //mongodb database name
+DB_NAME = STRING //mongodb database name
+JWT_SECRET = STRING //JWT Secret used to generate tokens
 ```
 
 ### Run the server
