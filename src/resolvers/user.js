@@ -1,15 +1,21 @@
 import { ApolloError, AuthenticationError } from 'apollo-server-express'
 import utils from '../utils'
 
-const { pwHash, pwAuth, jwtRegister } = utils
+const { pwHash, pwAuth, jwtRegister, jwtAuth } = utils
 
 export default {
   Query: {
-    user: (root, { id }, { User }, info) => {
+    user: async (root, { id }, { User, token }, info) => {
       try {
-        return User.findById(id).exec()
+        if (!token) { throw new AuthenticationError(`Unauthenticated`) }
+        await jwtAuth(token)
+
+        let response = await User.findById(id).exec()
+        if (!response) { throw new ApolloError(`Unable to find a user with the provided ID`) }
+
+        return response
       } catch (e) {
-        throw new ApolloError(`Unable to find a user witht the provided ID`)
+        throw new ApolloError(e.message)
       }
     }
   },
@@ -32,7 +38,7 @@ export default {
         if (!validPw) { throw new Error('Invalid email or password') }
 
         let token = await jwtRegister({ id: user['_id'] })
-        return token
+        return { token }
       } catch (e) {
         throw new AuthenticationError(`Error while Login in ${e.message}`)
       }

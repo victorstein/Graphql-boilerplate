@@ -27,7 +27,10 @@ import models from './models'
       typeDefs,
       resolvers,
       playground: NODE_ENV !== 'production',
-      context: { User }
+      context: ({ req }) => {
+        const token = req.headers.authorization || null
+        return { User, token }
+      }
     })
 
     server.applyMiddleware({ app })

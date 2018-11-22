@@ -1,5 +1,7 @@
 # GraphQL API boilerplate
 
+![alt text](https://github.com/victorstein/Graphql-boilerplate/blob/master/js.png)
+
 This is a boilerplate of a graphQL API with apollo server 2.0, Express, Webpack, Babel, dotenv, nodemon, jsonwebtoken, bcrypt and mongoose.
 
 ### Installation
@@ -37,8 +39,3 @@ Feel free to contribute to the growth or enhancement of the boilerplate by submi
 
 ### Author
 Alfonso Gomez
-
-### Pending stuff
-```
-adding jsonwebtoken
-```
