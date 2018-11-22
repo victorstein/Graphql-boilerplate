@@ -7,7 +7,7 @@ This is a boilerplate of a graphQL API with apollo server 2.0, Express, Webpack,
 Just clone the repo
 ```git clone https://github.com/victorstein/Graphql-boilerplate```
 
-add a .env file to the root containing the following schema
+add a .env file to the root containing the following schema:
 
 ```
 PORT = INT //Port to run the app
